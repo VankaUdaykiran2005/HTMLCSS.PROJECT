@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+  <h1>Quiz App</h1>
+  <div id="quiz-container">
+    <p id="question"></p>
+    <div id="options"></div>
+    <p>Time left: <span id="timer">10</span></p>
+    <p>Score: <span id="score">0</span></p>
+  </div><br>
+  <button onclick="startQuiz()">Start Quiz</button>
+  <button onclick="viewScores()">View Score</button>
+
+  <script>
+    const quizdata = [
+      {
+        question: "What is the capital of France?",
+        options: ["Berlin", "Madrid", "Paris", "Rome"],
+        answer: "Paris"
+      },
+      {
+        question: "What is 2 + 2?",
+        options: ["3", "4", "5", "6"],
+        answer: "4"
+      },
+      {
+        question: "What is the largest planet in our solar system?",
+        options: ["Earth", "Mars", "Jupiter", "Saturn"],
+        answer: "Jupiter"
+      }
+    ];
+
+    let score = 0;
+    let currentIndex = 0;
+    let timeleft = 10;
+    let timer;
+
+    function startQuiz() {
+      score = 0;
+      currentIndex = 0;
+      timeleft = 10;
+      loadQuestion();
+    }
+
+    function loadQuestion() {
+      if (currentIndex >= quizdata.length) {
+        endQuiz();
+        return;
+      }
+
+      const { question, options } = quizdata[currentIndex];
+      document.getElementById("question").innerText = question;
+
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+
+      options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.innerText = option;
+        btn.onclick = () => checkAnswer(option);
+        optionsDiv.appendChild(btn);
+      });
+
+      startTimer();
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timeleft = 10;
+      document.getElementById("timer").innerText = timeleft;
+
+      timer = setInterval(() => {
+        timeleft--;
+        document.getElementById("timer").innerText = timeleft;
+        if (timeleft <= 0) {
+          clearInterval(timer);
+          currentIndex++;
+          loadQuestion();
+        }
+      }, 1000);
+    }
+
+    function checkAnswer(selected) {
+      clearInterval(timer);
+      if (selected === quizdata[currentIndex].answer) {
+        score++;
+        document.getElementById("score").innerText = score;
+        alert("✅ Correct!");
+      } else {
+        alert("❌ Wrong! Correct answer: " + quizdata[currentIndex].answer);
+      }
+      currentIndex++;
+      loadQuestion();
+    }
+
+    function endQuiz() {
+      clearInterval(timer);
+      alert(`🎉 Quiz over! Your final score is ${score}`);
+      localStorage.setItem("lastScore", score);
+    }
+
+    function viewScores() {
+      let pastScore = localStorage.getItem("lastScore");
+      if (pastScore !== null) {
+        alert(`📊 Your last score was: ${pastScore}`);
+      } else {
+        alert("No previous score found.");
+      }
+    }
+  </script>
+</body>
+</html>
