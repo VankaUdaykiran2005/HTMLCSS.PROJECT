@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahindra Premium Showroom</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff;
+            color: #333;
+        }
+        nav {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #00bfff;
+        }
+        header {
+            background-image: url("Mahindra.avif");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .specs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: #f4f4f4;
+            padding: 40px;
+            gap: 20px;
+        }
+        .specs-1 {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 5px 8px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 220px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .specs-1:hover {
+            transform: scale(1.05);
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 40px;
+            background-color: #fff;
+        }
+
+        .gallery img {
+            border-radius: 10px;
+            box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            width: 300px;
+            height: auto;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .video-section {
+            background-color: #f4f4f4;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .video-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .video-container {
+            display: flex;
+            position: relative;
+            padding-bottom: 30.25%; 
+            height: 0;
+            overflow: hidden;
+            max-width: 120%;
+            border-radius: 10px;
+            box-shadow: 4px 6px 10px rgba(0,0,0,0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+                padding: 15px;
+            }
+            .specs {
+                flex-direction: column;
+                align-items: center;
+            }
+            .gallery {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#cars">Cars</a>
+        <a href="#specs">Specification</a>
+        <a href="#about">About</a>
+        <a href="#video">Video</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <header>
+        <h1>Welcome to Mahindra Premium Showroom</h1>
+    </header>
+    <section id="specs" class="specs">
+        <div class="specs-1">
+            <h3>Thar Roxx</h3>
+            <p>Engine: 2184cc</p>
+            <p>Horsepower: 172bhp</p>
+            <p>Top Speed: 155km/h</p>
+        </div>
+        <div class="specs-1">
+            <h3>XUV 700</h3>
+            <p>Engine: 2184cc</p>
+            <p>Horsepower: 197bhp</p>
+            <p>Top Speed: 200km/h</p>
+        </div>
+        <div class="specs-1">
+            <h3>SUV 300</h3>
+            <p>Engine: 1197cc</p>
+            <p>Horsepower: 130bhp</p>
+            <p>Top Speed: 175km/h</p>
+        </div>
+    </section>
+    <section id="cars" class="gallery">
+        <img src="thar roxd.jpg" alt="Thar Roxx">
+        <img src="xuv.avif" alt="XUV 700">
+        <img src="suv.jpg" alt="SUV 300">
+    </section>
+    <section id="video" class="video-section">
+        <h2>Mahindra Showroom Tour</h2>
+        <div class="video-container">
+            <iframe src="//www.youtube.com/embed/RvmmUPpd4So?si=Z_-rs_xI4D_cguAC"
+                    title="Mahindra Showroom Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+</body>
+</html>
